@@ -43,8 +43,7 @@ if not start_flag[0]:
         start_flag[1] = False
 
 if not start_flag[1]:
-    st.empty()
-    ti("Is Egeggeg a sb?")
+    ti(st.empty(), "Is Egeggeg a sb?")
     yes = bu("Yes", "egsb")
     no = bu("No", "eggood")
     if no:
