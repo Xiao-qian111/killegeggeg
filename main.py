@@ -32,7 +32,7 @@ petals = [
 start_flag = [False, False]
 if not start_flag[0]:
     start_flag[1] = True
-    ti("Is SCXG a sb?")
+    emp.title("Is SCXG a sb?", text_alignment="center")
     yes = bu("Yes", "scsb")
     no = bu("No", "scgood")
     if yes:
