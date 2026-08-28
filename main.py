@@ -32,6 +32,9 @@ if "petals" not in st.session_state:
         ["cutegay", 5, 5, 0]
     ]
 
+if "using" not in st.session_state:
+    st.session_state.using = []
+
 # Start
 if "stage" not in st.session_state:
     st.session_state.stage = 0
@@ -84,4 +87,5 @@ elif st.session_state.stage == 3:
     else:
         st.info(f"Selected {len(selected)}/5：{selected}")
     if len(selected) == 5 and st.button("Done"):
+        st.session_state.using = selected
         st.success(f"Choosed: {selected}")
