@@ -10,10 +10,14 @@ def he(text):
 def su(text):
     st.subheader(text, text_alignment="center")
 
-def bu(text, id):
+def bu(text, id, em = False):
     _, c_center, _ = st.columns([1, 1.2, 1])
     with c_center:
-        tmp = st.button(text, key = id)
+        if em:
+            emp = st.empty()
+            tmp = emp.button(text, key = id)
+        else
+            tmp = st.button(text, key = id)
     return tmp
 
 def getout(why):
