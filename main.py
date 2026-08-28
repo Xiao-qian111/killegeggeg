@@ -16,8 +16,6 @@ def getout(why):
     he("Please reload if " + why)
     st.stop()
 
-c1, c_center, c2 = st.columns([1, 1.2, 1])
-
 petals = [
     ["Basic", 10, 0, 5],
     ["gunmu", 0, 10, 0],
@@ -27,6 +25,7 @@ petals = [
 ]
 
 # Start
+c1, c_center, c2 = st.columns([1, 1.2, 1])
 start_flag = [False, False]
 if not start_flag[0]:
     start_flag[1] = True
