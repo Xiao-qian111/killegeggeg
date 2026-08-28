@@ -10,6 +10,12 @@ def he(text):
 def su(text):
     st.subheader(text, text_alignment="center")
 
+def bu(text, id):
+    _, c_center, _ = st.columns([1, 1.2, 1])
+    with c_center:
+        tmp = st.button(text, key = id)
+    return tmp
+
 def getout(why):
     st.empty()
     ti("Get Out")
@@ -25,14 +31,12 @@ petals = [
 ]
 
 # Start
-c1, c_center, c2 = st.columns([1, 1.2, 1])
 start_flag = [False, False]
 if not start_flag[0]:
     start_flag[1] = True
     ti("Is SCXG a sb?")
-    with c_center:
-        yes = st.button("Yes", key = "scsb")
-        no = st.button("No", key = "scgood")
+    yes = bu("Yes", key = "scsb")
+    no = bu("No", key = "scgood")
     if yes:
         getout("SCXG isn't a sb")
     if no:
@@ -41,9 +45,8 @@ if not start_flag[0]:
 
 if not start_flag[1]:
     ti("Is Egeggeg a sb?")
-    with c_center:
-        yes = st.button("Yes", "egsb")
-        no = st.button("No", "eggood")
+    yes = bu("Yes", "egsb")
+    no = bu("No", "eggood")
     if no:
         getout("Egeggeg is a sb")
     if yes:
