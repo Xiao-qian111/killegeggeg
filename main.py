@@ -65,6 +65,7 @@ elif st.session_state.stage == 2:
         ti("Killegeggeg Game")
         gogogo = bu("Start▶️", "gogogo")
         if gogogo:
+            su("Please wait...")
             st.session_state.stage = 3
 
 elif st.session_state.stage == 3:
