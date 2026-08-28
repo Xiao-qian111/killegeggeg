@@ -26,10 +26,11 @@ if "petals" not in st.session_state:
     st.session_state.petals = [
         ["None", 0, 0, 5],
         ["Basic", 10, 0, 5],
-        ["gunmu", 0, 10, 0],
-        ["sccutter", 15, 0, 0],
-        ["egeggeg", 0, ".", 0],
-        ["cutegay", 5, 5, 0]
+        ["Gunmu", 0, 10, 0],
+        ["SC's Cutter", 15, 0, 0],
+        ["Egeggeg", 0, ".", 0],
+        ["Cutegay", 5, 5, 0],
+        ["Bbl15-Antagonisms", 100, -50, 0]
     ]
 
 if "using" not in st.session_state:
@@ -72,20 +73,28 @@ elif st.session_state.stage == 2:
             st.session_state.stage = 3
 
 elif st.session_state.stage == 3:
-    options = []
-    for petal in st.session_state.petals:
-        for i in range(petal[3]):
-            options.append(petal[0])
-    st.subheader("You can choose 5 petals")
-    selected = []
-    for i in range(len(options)):
-        checked = st.checkbox(options[i], key = i)
-        if checked:
-            selected.append(options[i])
-    if len(selected) > 5:
-        st.warning("You choosed too much!")
-    else:
-        st.info(f"Selected {len(selected)}/5：{selected}")
-    if len(selected) == 5 and st.button("Done"):
-        st.session_state.using = selected
-        st.success(f"Choosed: {selected}")
+    with emp.container():
+        options = []
+        for petal in st.session_state.petals:
+            for i in range(petal[3]):
+                options.append(petal[0])
+        st.subheader("You can choose 5 petals")
+        selected = []
+        for i in range(len(options)):
+            checked = st.checkbox(options[i], key = i)
+            if checked:
+                selected.append(options[i])
+        
+        if len(selected) > 5:
+            st.warning("You choosed too much!")
+        else:
+            st.info(f"Selected {len(selected)}/5：{selected}")
+        if len(selected) == 5 and st.button("Done"):
+            st.session_state.stage = 4
+
+elif st.session_state.stage == 4:
+    with emp.container():
+        ti("What to do?")
+        inv = bu("Check inventory", "inv")
+        kill = bu("Fight", "kill")
+        # WIP
