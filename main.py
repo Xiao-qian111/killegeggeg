@@ -35,8 +35,8 @@ start_flag = [False, False]
 if not start_flag[0]:
     start_flag[1] = True
     ti("Is SCXG a sb?")
-    yes = bu("Yes", key = "scsb")
-    no = bu("No", key = "scgood")
+    yes = bu("Yes", "scsb")
+    no = bu("No", "scgood")
     if yes:
         getout("SCXG isn't a sb")
     if no:
@@ -45,8 +45,8 @@ if not start_flag[0]:
 
 if not start_flag[1]:
     ti("Is Egeggeg a sb?")
-    yes = bu("Yes", key = "egsb")
-    no = bu("No", key = "eggood")
+    yes = bu("Yes", "egsb")
+    no = bu("No", "eggood")
     if no:
         getout("Egeggeg is a sb")
     if yes:
