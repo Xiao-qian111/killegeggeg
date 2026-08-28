@@ -26,8 +26,8 @@ petals = [
 start_flag = [False, False]
 if not start_flag[0]:
     ti("Is SCXG a sb?")
-    yes = st.button("Yes")
-    no = st.button("No")
+    yes = st.button("Yes", key = "scsb")
+    no = st.button("No", key = "scgood")
     if yes:
         getout("SCXG isn't a sb")
     if no:
@@ -35,8 +35,8 @@ if not start_flag[0]:
 
 if not start_flag[1]:
     ti("Is Egeggeg a sb?")
-    yes = st.button("Yes")
-    no = st.button("No")
+    yes = st.button("Yes", key = "egsb")
+    no = st.button("No", key = "eggood")
     if no:
         getout("Egeggeg is a sb")
     if yes:
