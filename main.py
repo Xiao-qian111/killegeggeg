@@ -33,9 +33,10 @@ petals = [
 ]
 
 # Start
+if "stage" not in st.session_state:
+    st.session_state.stage = 0
 emp = st.empty()
-start_flag = [False, False]
-if not start_flag[0]:
+if st.session_state.stage == 0:
     start_flag[1] = True
     emp.title("Is SCXG a sb?", text_alignment="center")
     yes = bu("Yes", "scsb")
@@ -44,10 +45,10 @@ if not start_flag[0]:
         emp.empty()
         getout("SCXG isn't a sb")
     if no:
-        start_flag[0] = True
-        start_flag[1] = False
+        st.session_state.stage = 1
+        st.rerun()
 
-if not start_flag[1]:
+elif st.session_state.stage == 1:
     emp.title("Is Egeggeg a sb?", text_alignment="center")
     yes = bu("Yes", "egsb")
     no = bu("No", "eggood")
@@ -55,4 +56,4 @@ if not start_flag[1]:
         emp.empty()
         getout("Egeggeg is a sb")
     if yes:
-        start_flag[1] = True
+        pass
