@@ -1,8 +1,6 @@
 # Some codes are by AI
 import streamlit as st
 
-emp = st.empty()
-
 def ti(text):
     st.title(text, text_alignment="center")
 
@@ -45,6 +43,7 @@ if not start_flag[0]:
         start_flag[1] = False
 
 if not start_flag[1]:
+    emp = st.empty()
     emp.title("Is Egeggeg a sb?", text_alignment="center")
     yes = bu("Yes", "egsb")
     no = bu("No", "eggood")
