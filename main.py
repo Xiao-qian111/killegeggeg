@@ -12,13 +12,10 @@ def he(text):
 def su(text):
     st.subheader(text, text_alignment="center")
 
-def bu(text, id, em = True):
+def bu(text, id):
     _, c_center, _ = st.columns([1, 1.2, 1])
     with c_center:
-        if em:
-            tmp = emp.button(text, key = id)
-        else:
-            tmp = st.button(text, key = id)
+        tmp = st.button(text, key = id)
     return tmp
 
 def getout(why):
@@ -38,9 +35,10 @@ if "stage" not in st.session_state:
     st.session_state.stage = 0
     
 if st.session_state.stage == 0:
-    emp.title("Is SCXG a sb?", text_alignment="center")
-    yes = bu("Yes", "scsb")
-    no = bu("No", "scgood")
+    with emp.container():
+        ti("Is SCXG a sb?")
+        yes = bu("Yes", "scsb")
+        no = bu("No", "scgood")
     if yes:
         emp.empty()
         getout("SCXG isn't a sb")
@@ -49,9 +47,10 @@ if st.session_state.stage == 0:
         st.rerun()
 
 elif st.session_state.stage == 1:
-    emp.title("Is Egeggeg a sb?", text_alignment="center")
-    yes = bu("Yes", "egsb")
-    no = bu("No", "eggood")
+    with emp.container():
+        ti("Is Egeggeg a sb?")
+        yes = bu("Yes", "egsb")
+        no = bu("No", "eggood")
     if no:
         emp.empty()
         getout("Egeggeg is a sb")
