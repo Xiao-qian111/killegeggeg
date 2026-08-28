@@ -16,7 +16,7 @@ def bu(text, id, em = True):
         if em:
             emp = st.empty()
             tmp = emp.button(text, key = id)
-        else
+        else:
             tmp = st.button(text, key = id)
     return tmp
 
