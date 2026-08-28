@@ -1,14 +1,7 @@
 # Some codes are by AI
 import streamlit as st
 
-st.markdown("""
-<style>
-div[data-testid="column"] {
-    display: flex;
-    justify-content: center;
-}
-</style>
-""", unsafe_allow_html = True)
+c1, c_center, c2 = st.columns([1, 1.2, 1])
 
 def ti(text):
     st.title(text, text_alignment="center")
@@ -18,6 +11,10 @@ def he(text):
 
 def su(text):
     st.subheader(text, text_alignment="center")
+
+def bu(text, id):
+    with c_center:
+        return yes = st.button(text, key = id)
 
 def getout(why):
     st.empty()
@@ -38,8 +35,8 @@ start_flag = [False, False]
 if not start_flag[0]:
     start_flag[1] = True
     ti("Is SCXG a sb?")
-    yes = st.button("Yes", key = "scsb")
-    no = st.button("No", key = "scgood")
+    yes = bu("Yes", key = "scsb")
+    no = bu("No", key = "scgood")
     if yes:
         getout("SCXG isn't a sb")
     if no:
@@ -48,8 +45,8 @@ if not start_flag[0]:
 
 if not start_flag[1]:
     ti("Is Egeggeg a sb?")
-    yes = st.button("Yes", key = "egsb")
-    no = st.button("No", key = "eggood")
+    yes = bu("Yes", key = "egsb")
+    no = bu("No", key = "eggood")
     if no:
         getout("Egeggeg is a sb")
     if yes:
