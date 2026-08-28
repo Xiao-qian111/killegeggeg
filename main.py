@@ -1,4 +1,14 @@
+# Some codes are by AI
 import streamlit as st
+
+st.markdown("""
+<style>
+.stButton > button {
+    justify-content: center !important;
+    margin:0 auto !important;
+}
+</style>
+""", unsafe_allow_html = True)
 
 def ti(text):
     st.title(text, text_alignment="center")
@@ -10,6 +20,7 @@ def su(text):
     st.subheader(text, text_alignment="center")
 
 def getout(why):
+    st.empty()
     ti("Get Out")
     he("Please reload if " + why)
     st.stop()
@@ -25,6 +36,7 @@ petals = [
 # Start
 start_flag = [False, False]
 if not start_flag[0]:
+    start_flag[1] = True
     ti("Is SCXG a sb?")
     yes = st.button("Yes", key = "scsb")
     no = st.button("No", key = "scgood")
@@ -32,6 +44,7 @@ if not start_flag[0]:
         getout("SCXG isn't a sb")
     if no:
         start_flag[0] = True
+        start_flag[1] = False
 
 if not start_flag[1]:
     ti("Is Egeggeg a sb?")
