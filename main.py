@@ -62,4 +62,24 @@ elif st.session_state.stage == 1:
 elif st.session_state.stage == 2:
     with emp.container():
         ti("Killegeggeg Game")
-        gogogo = bu("Start", "gogogo")
+        gogogo = bu("Start▶️", "gogogo")
+        if gogogo:
+            st.session_state.stage = 3
+
+elif st.session_state.stage == 3:
+    options = []
+    for petal in st.session_state.petals:
+        for i in range(petal[3]):
+            options.append(petal[0])
+    st.subheader("You can choose 5 petals")
+    selected = []
+    for opt in options:
+        checked = st.checkbox(opt, key=opt)
+        if checked:
+            selected.append(opt)
+    if len(selected) > 5:
+        st.warning("You choosed too much!")
+    else:
+        st.info(f"Selected {len(selected)}/5：{selected}")
+    if len(selected) == 5 and st.button("Done"):
+        st.success(f"Choosed: {selected}")
