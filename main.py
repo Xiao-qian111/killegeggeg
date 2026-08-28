@@ -10,7 +10,7 @@ def he(text):
 def su(text):
     st.subheader(text, text_alignment="center")
 
-def bu(text, id, em = False):
+def bu(text, id, em = True):
     _, c_center, _ = st.columns([1, 1.2, 1])
     with c_center:
         if em:
