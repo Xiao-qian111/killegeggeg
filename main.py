@@ -24,6 +24,7 @@ def getout(why):
 
 if "petals" not in st.session_state:
     st.session_state.petals = [
+        ["None", 0, 0, 5],
         ["Basic", 10, 0, 5],
         ["gunmu", 0, 10, 0],
         ["sccutter", 15, 0, 0],
