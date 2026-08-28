@@ -36,16 +36,19 @@ if not start_flag[0]:
     yes = bu("Yes", "scsb")
     no = bu("No", "scgood")
     if yes:
+        st.empty()
         getout("SCXG isn't a sb")
     if no:
         start_flag[0] = True
         start_flag[1] = False
 
 if not start_flag[1]:
+    st.empty()
     ti("Is Egeggeg a sb?")
     yes = bu("Yes", "egsb")
     no = bu("No", "eggood")
     if no:
+        st.empty()
         getout("Egeggeg is a sb")
     if yes:
         start_flag[1] = True
