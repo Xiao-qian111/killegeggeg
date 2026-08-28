@@ -1,6 +1,8 @@
 # Some codes are by AI
 import streamlit as st
 
+emp = st.empty()
+
 def ti(text):
     st.title(text, text_alignment="center")
 
@@ -14,7 +16,6 @@ def bu(text, id, em = True):
     _, c_center, _ = st.columns([1, 1.2, 1])
     with c_center:
         if em:
-            emp = st.empty()
             tmp = emp.button(text, key = id)
         else:
             tmp = st.button(text, key = id)
@@ -35,7 +36,7 @@ petals = [
 # Start
 if "stage" not in st.session_state:
     st.session_state.stage = 0
-emp = st.empty()
+    
 if st.session_state.stage == 0:
     emp.title("Is SCXG a sb?", text_alignment="center")
     yes = bu("Yes", "scsb")
