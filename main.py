@@ -29,6 +29,7 @@ petals = [
 ]
 
 # Start
+emp = st.empty()
 start_flag = [False, False]
 if not start_flag[0]:
     start_flag[1] = True
@@ -43,7 +44,6 @@ if not start_flag[0]:
         start_flag[1] = False
 
 if not start_flag[1]:
-    emp = st.empty()
     emp.title("Is Egeggeg a sb?", text_alignment="center")
     yes = bu("Yes", "egsb")
     no = bu("No", "eggood")
