@@ -45,7 +45,7 @@ if not start_flag[0]:
         start_flag[1] = False
 
 if not start_flag[1]:
-    st.title(emp, "Is Egeggeg a sb?", text_alignment="center")
+    emp.title("Is Egeggeg a sb?", text_alignment="center")
     yes = bu("Yes", "egsb")
     no = bu("No", "eggood")
     if no:
