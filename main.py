@@ -17,10 +17,8 @@ def bu(text, id):
     return tmp
 
 def getout(why):
-    st.empty()
     ti("Get Out")
     he("Please reload if " + why)
-    st.stop()
 
 petals = [
     ["Basic", 10, 0, 5],
