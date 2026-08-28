@@ -73,10 +73,10 @@ elif st.session_state.stage == 3:
             options.append(petal[0])
     st.subheader("You can choose 5 petals")
     selected = []
-    for opt in options:
-        checked = st.checkbox(opt, key=opt)
+    for i in range(len(options)):
+        checked = st.checkbox(options[i], key = i)
         if checked:
-            selected.append(opt)
+            selected.append(options[i])
     if len(selected) > 5:
         st.warning("You choosed too much!")
     else:
