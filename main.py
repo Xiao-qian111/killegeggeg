@@ -37,7 +37,6 @@ if "stage" not in st.session_state:
     st.session_state.stage = 0
 emp = st.empty()
 if st.session_state.stage == 0:
-    start_flag[1] = True
     emp.title("Is SCXG a sb?", text_alignment="center")
     yes = bu("Yes", "scsb")
     no = bu("No", "scgood")
