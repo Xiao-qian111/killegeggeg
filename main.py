@@ -12,10 +12,6 @@ def he(text):
 def su(text):
     st.subheader(text, text_alignment="center")
 
-def bu(text, id):
-    with c_center:
-        return st.button(text, key = id)
-
 def getout(why):
     st.empty()
     ti("Get Out")
@@ -35,8 +31,9 @@ start_flag = [False, False]
 if not start_flag[0]:
     start_flag[1] = True
     ti("Is SCXG a sb?")
-    yes = bu("Yes", "scsb")
-    no = bu("No", "scgood")
+    with c_center:
+        yes = st.button("Yes", key = "scsb")
+        no = st.button("No", key = "scgood")
     if yes:
         getout("SCXG isn't a sb")
     if no:
@@ -45,8 +42,9 @@ if not start_flag[0]:
 
 if not start_flag[1]:
     ti("Is Egeggeg a sb?")
-    yes = bu("Yes", "egsb")
-    no = bu("No", "eggood")
+    with c_center:
+        yes = st.button("Yes", "egsb")
+        no = st.button("No", "eggood")
     if no:
         getout("Egeggeg is a sb")
     if yes:
