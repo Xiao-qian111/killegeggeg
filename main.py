@@ -1,8 +1,6 @@
 # Some codes are by AI
 import streamlit as st
 
-c1, c_center, c2 = st.columns([1, 1.2, 1])
-
 def ti(text):
     st.title(text, text_alignment="center")
 
@@ -17,6 +15,8 @@ def getout(why):
     ti("Get Out")
     he("Please reload if " + why)
     st.stop()
+
+c1, c_center, c2 = st.columns([1, 1.2, 1])
 
 petals = [
     ["Basic", 10, 0, 5],
