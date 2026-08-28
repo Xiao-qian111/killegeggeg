@@ -3,9 +3,9 @@ import streamlit as st
 
 st.markdown("""
 <style>
-.stButton > button {
-    justify-content: center !important;
-    margin:0 auto !important;
+div[data-testid="column"] {
+    display: flex;
+    justify-content: center;
 }
 </style>
 """, unsafe_allow_html = True)
