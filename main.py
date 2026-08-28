@@ -22,13 +22,14 @@ def getout(why):
     ti("Get Out")
     he("Please reload if " + why)
 
-petals = [
-    ["Basic", 10, 0, 5],
-    ["gunmu", 0, 10, 0],
-    ["sccutter", 15, 0, 0],
-    ["egeggeg", 0, ".", 0],
-    ["cutegay", 5, 5, 0]
-]
+if "petals" not in st.session_state:
+    st.session_state.petals = [
+        ["Basic", 10, 0, 5],
+        ["gunmu", 0, 10, 0],
+        ["sccutter", 15, 0, 0],
+        ["egeggeg", 0, ".", 0],
+        ["cutegay", 5, 5, 0]
+    ]
 
 # Start
 if "stage" not in st.session_state:
@@ -55,4 +56,10 @@ elif st.session_state.stage == 1:
         emp.empty()
         getout("Egeggeg is a sb")
     if yes:
-        pass
+        st.session_state.stage = 2
+        st.rerun()
+
+elif st.session_state.stage == 2:
+    with emp.container():
+        ti("Killegeggeg Game")
+        gogogo = bu("Start", "gogogo")
