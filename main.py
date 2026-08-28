@@ -14,7 +14,7 @@ def su(text):
 
 def bu(text, id):
     with c_center:
-        return yes = st.button(text, key = id)
+        return st.button(text, key = id)
 
 def getout(why):
     st.empty()
