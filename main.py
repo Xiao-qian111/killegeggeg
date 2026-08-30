@@ -1,5 +1,8 @@
 # Some codes are by AI
 import streamlit as st
+import random as r
+
+LOCKED = [-1, 7, 8]
 
 emp = st.empty()
 
@@ -31,10 +34,20 @@ if "petals" not in st.session_state:
         ["Egeggeg", 0, ".", 0],
         ["Cutegay", 5, 5, 0],
         ["Bbl15-Antagonisms", 100, -50, 0]
+        ["Unknow", -10, 50, 0]
     ]
 
 if "using" not in st.session_state:
     st.session_state.using = []
+
+if "damage" not in st.session_state:
+    st.session_state.damage = 0
+if "sheild" not in st.session_state:
+    st.session_state.sheild = 0
+if "edamage" not in st.session_state:
+    st.session_state.edamage = 0
+if "esheild" not in st.session_state:
+    st.session_state.esheild = 0
 
 # Start
 if "stage" not in st.session_state:
@@ -90,6 +103,10 @@ elif st.session_state.stage == 3:
         else:
             st.info(f"Selected {len(selected)}/5：{selected}")
         if len(selected) == 5 and st.button("Done"):
+            st.session_state.using = selected
+            for item in selected:
+                st.session_state.damage += item[1]
+                st.session_state.sheild += item[2]
             st.session_state.stage = 4
 
 elif st.session_state.stage == 4:
@@ -97,4 +114,62 @@ elif st.session_state.stage == 4:
         ti("What to do?")
         inv = bu("Check inventory", "inv")
         kill = bu("Fight", "kill")
-        # WIP
+        if inv:
+            st.session_state.stage = 3
+        if kill:
+            st.session_state.stage = 5
+
+elif st.session_state.stage == 5:
+    st.session_state.edamage = r.randint(10, 75)
+    st.session_state.esheild = r.randint(0, 25)
+    with emp.container():
+        ti("You meet an Egeggeg")
+        he("Damage: " + st.session_state.edamage)
+        he("Sheild: " + st.session_state.esheild)
+        killit = bu("Kill", "killit")
+        if killit:
+            player = st.session_state.damage - st.session_state.esheild
+            enemy = st.session_state.edamage - st.session_state.sheild
+            if player > enemy:
+                st.session_state.stage = 6
+            elif player == enemy:
+                st.session_state.stage = 7
+            else:
+                st.session_state.stage = 8
+
+elif st.session_state.stage == 6:
+    win = r.randint(1, 5)
+    gets = []
+    extra = "no"
+    for i in range(win):
+        get = -1
+        while get in LOCKED:
+            get = r.randint(0, len(st.session_state.petals) - 1)
+        st.session_state.petals[get][3] += 1
+        gets.append(st.session_state.petals[get][0])
+    if r.randint(1, 100):
+        what = LOCKED[r.randint(1, len(LOCKED))]
+        st.session_state.petals[what][3] += 1
+        extra  = st.session_state.petals[what][0]
+    with emp.container():
+        ti("You win!")
+        he("You get: " + gets)
+        he("And a secret petal: " + extra)
+        inv = bu("Check inventory", "inv")
+        if inv:
+            st.session_state.stage = 3
+
+elif st.session_state.stage == 7:
+    with emp.container():
+        ti("You guys are in a tie")
+        inv = bu("Check inventory", "inv")
+        if inv:
+            st.session_state.stage = 3
+
+elif st.session_state.stage == 8:
+    with emp.container():
+        ti("You lost!")
+        inv = bu("Check inventory", "inv")
+        if inv:
+            st.session_state.stage = 3
+    # I think I should add lost petals
