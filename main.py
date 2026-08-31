@@ -160,9 +160,9 @@ elif st.session_state.stage == 6:
         extra  = st.session_state.petals[what][0]
     with emp.container():
         ti("You win!")
-        he("You get: " + gets)
+        he(f"You get: {gets}")
         if extra != "no":
-            he("And a secret petal: " + extra)
+            he("And a secret petal: " + str(extra))
         inv = bu("Check inventory", "inv")
         if inv:
             st.session_state.stage = 3
