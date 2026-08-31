@@ -40,7 +40,7 @@ if "petals" not in st.session_state:
 if "id" not in st.session_state:
     st.session_state.id = {}
     i = 0
-    for p in st.session_state.id:
+    for p in st.session_state.petals:
         st.session_state.id[p[0]] = i
         i += 1
 
