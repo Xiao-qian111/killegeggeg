@@ -33,7 +33,7 @@ if "petals" not in st.session_state:
         ["SC's Cutter", 15, 0, 0],
         ["Egeggeg", 0, ".", 0],
         ["Cutegay", 5, 5, 0],
-        ["Bbl15-Antagonisms", 100, -50, 0]
+        ["Bbl15-Antagonisms", 100, -50, 0],
         ["Unknow", -10, 50, 0]
     ]
 
