@@ -131,8 +131,8 @@ elif st.session_state.stage == 5:
     st.session_state.esheild = r.randint(0, 25)
     with emp.container():
         ti("You meet an Egeggeg")
-        he("Damage: " + st.session_state.edamage)
-        he("Sheild: " + st.session_state.esheild)
+        he("Damage: " + str(st.session_state.edamage))
+        he("Sheild: " + str(st.session_state.esheild))
         killit = bu("Kill", "killit")
         if killit:
             player = st.session_state.damage - st.session_state.esheild
