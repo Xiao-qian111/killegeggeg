@@ -155,7 +155,7 @@ elif st.session_state.stage == 6:
         st.session_state.petals[get][3] += 1
         gets.append(st.session_state.petals[get][0])
     if r.randint(1, 100):
-        what = LOCKED[r.randint(1, len(LOCKED))]
+        what = LOCKED[r.randint(0, len(LOCKED) - 1)]
         st.session_state.petals[what][3] += 1
         extra  = st.session_state.petals[what][0]
     with emp.container():
