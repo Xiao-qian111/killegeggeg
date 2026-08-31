@@ -2,7 +2,7 @@
 import streamlit as st
 import random as r
 
-LOCKED = [-1, 7, 8]
+LOCKED = [-1, 6, 7]
 
 emp = st.empty()
 
@@ -31,11 +31,18 @@ if "petals" not in st.session_state:
         ["Basic", 10, 0, 5],
         ["Gunmu", 0, 10, 0],
         ["SC's Cutter", 15, 0, 0],
-        ["Egeggeg", 0, ".", 0],
+        ["Egeggeg", -5, 25, 0],
         ["Cutegay", 5, 5, 0],
         ["Bbl15-Antagonisms", 100, -50, 0],
         ["Unknow", -10, 50, 0]
     ]
+
+if "id" not in st.session_state:
+    st.session_state.id = {}
+    i = 0
+    for p in st.session_state.id:
+        st.session_state.id[p[0]] = i
+        i += 1
 
 if "using" not in st.session_state:
     st.session_state.using = []
@@ -105,8 +112,8 @@ elif st.session_state.stage == 3:
         if len(selected) == 5 and st.button("Done"):
             st.session_state.using = selected
             for item in selected:
-                st.session_state.damage += item[1]
-                st.session_state.sheild += item[2]
+                st.session_state.damage += st.session_state.petals[st.session_state.id[item]][1]
+                st.session_state.sheild += st.session_state.petals[st.session_state.id[item]][2]
             st.session_state.stage = 4
 
 elif st.session_state.stage == 4:
