@@ -89,8 +89,9 @@ elif st.session_state.stage == 2:
         ti("Killegeggeg Game")
         gogogo = bu("Start▶️", "gogogo")
         if gogogo:
-            su("Please click it again after a while (this is a bug, idk why)")
+            # su("Please click it again after a while (this is a bug, idk why)")
             st.session_state.stage = 3
+            st.rerun()
 
 elif st.session_state.stage == 3:
     with emp.container():
@@ -115,6 +116,7 @@ elif st.session_state.stage == 3:
                 st.session_state.damage += st.session_state.petals[st.session_state.id[item]][1]
                 st.session_state.sheild += st.session_state.petals[st.session_state.id[item]][2]
             st.session_state.stage = 4
+            st.rerun()
 
 elif st.session_state.stage == 4:
     with emp.container():
@@ -123,8 +125,10 @@ elif st.session_state.stage == 4:
         kill = bu("Fight", "kill")
         if inv:
             st.session_state.stage = 3
+            st.rerun()
         if kill:
             st.session_state.stage = 5
+            st.rerun()
 
 elif st.session_state.stage == 5:
     st.session_state.edamage = r.randint(10, 75)
@@ -139,10 +143,13 @@ elif st.session_state.stage == 5:
             enemy = st.session_state.edamage - st.session_state.sheild
             if player > enemy:
                 st.session_state.stage = 6
+                st.rerun()
             elif player == enemy:
                 st.session_state.stage = 7
+                st.rerun()
             else:
                 st.session_state.stage = 8
+                st.rerun()
 
 elif st.session_state.stage == 6:
     win = r.randint(1, 5)
@@ -154,7 +161,7 @@ elif st.session_state.stage == 6:
             get = r.randint(0, len(st.session_state.petals) - 1)
         st.session_state.petals[get][3] += 1
         gets.append(st.session_state.petals[get][0])
-    if r.randint(1, 100):
+    if r.randint(1, 100) == 1:
         what = LOCKED[r.randint(0, len(LOCKED) - 1)]
         st.session_state.petals[what][3] += 1
         extra  = st.session_state.petals[what][0]
@@ -166,6 +173,7 @@ elif st.session_state.stage == 6:
         inv = bu("Check inventory", "inv")
         if inv:
             st.session_state.stage = 3
+            st.rerun()
 
 elif st.session_state.stage == 7:
     with emp.container():
@@ -173,6 +181,7 @@ elif st.session_state.stage == 7:
         inv = bu("Check inventory", "inv")
         if inv:
             st.session_state.stage = 3
+            st.rerun()
 
 elif st.session_state.stage == 8:
     with emp.container():
@@ -180,4 +189,5 @@ elif st.session_state.stage == 8:
         inv = bu("Check inventory", "inv")
         if inv:
             st.session_state.stage = 3
+            st.rerun()
     # I think I should add lost petals
