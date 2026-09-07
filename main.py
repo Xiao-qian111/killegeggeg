@@ -1,6 +1,7 @@
 # Some codes are by AI
 import streamlit as st
 import random as r
+import datetime
 
 LOCKED = [-1, 6, 7]
 
@@ -85,8 +86,12 @@ elif st.session_state.stage == 1:
         st.rerun()
 
 elif st.session_state.stage == 2:
+    now = datetime.datetime.now()
+    year = now.year
     with emp.container():
         ti("Killegeggeg Game")
+        he("v1.0.0 Bug ver XD")
+        su(str(year) + " SCXG Games")
         gogogo = bu("Start▶️", "gogogo")
         if gogogo:
             # su("Please click it again after a while (this is a bug, idk why)")
