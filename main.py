@@ -61,6 +61,15 @@ def DMCA():
         item[2] = 10000
     st.session_state.petals[11] = item
 
+def killend(sheild):
+    dice()
+    gamble()
+    sword(sheild)
+    DMCA()
+    del st.session_state["e_spawned"]
+    if "DMCA" in st.session_state.using:
+        st.session_state.petals[11][3]
+
 if "petals" not in st.session_state:
     st.session_state.petals = [
         ["None", 0, 0, 5],
@@ -172,11 +181,15 @@ elif st.session_state.stage == 4:
         ti("What to do?")
         inv = bu("Check inventory", "inv")
         kill = bu("Fight", "kill")
+        clog = bu("Check change log", "clog")
         if inv:
             st.session_state.stage = 3
             st.rerun()
         if kill:
             st.session_state.stage = 5
+            st.rerun()
+        if clog:
+            st.session_state.stage = 9
             st.rerun()
 
 elif st.session_state.stage == 5:
@@ -193,28 +206,16 @@ elif st.session_state.stage == 5:
             player = st.session_state.damage - st.session_state.esheild
             enemy = st.session_state.edamage - st.session_state.sheild
             if player > enemy:
-                dice()
-                gamble()
-                sword(st.session_state.esheild)
-                DMCA()
+                killend(st.session_state.esheild)
                 st.session_state.stage = 6
-                del st.session_state["e_spawned"]
                 st.rerun()
             elif player == enemy:
-                dice()
-                gamble()
-                sword(st.session_state.esheild)
-                DMCA()
+                killend(st.session_state.esheild)
                 st.session_state.stage = 7
-                del st.session_state["e_spawned"]
                 st.rerun()
             else:
-                dice()
-                gamble()
-                sword(st.session_state.esheild)
-                DMCA()
+                killend(st.session_state.esheild)
                 st.session_state.stage = 8
-                del st.session_state["e_spawned"]
                 st.rerun()
 
 elif st.session_state.stage == 6:
@@ -257,3 +258,16 @@ elif st.session_state.stage == 8:
             st.session_state.stage = 3
             st.rerun()
     # I think I should add lost petals
+
+elif st.session_state.stage == 9:
+    with emp.container():
+        # v1.0.1
+        st.title("Sep 8th, 2026 v1.0.1")
+        st.write("Add 4 new petals: Dice, Gamble, Sword and DMCA")
+        # v1.0.0
+        st.title("Sep 7th, 2026 v1.0.0")
+        st.write("The first version lol")
+        clogback = bu("Back", "clogback")
+        if clogback:
+            st.session_state.stage = 4
+            st.rerun()
