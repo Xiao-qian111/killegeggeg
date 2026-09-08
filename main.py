@@ -136,8 +136,10 @@ elif st.session_state.stage == 4:
             st.rerun()
 
 elif st.session_state.stage == 5:
-    st.session_state.edamage = r.randint(10, 75)
-    st.session_state.esheild = r.randint(0, 25)
+    if "e_spawned" not in st.session_state or st.session_state.e_spawned == False:
+        st.session_state.edamage = r.randint(10, 75)
+        st.session_state.esheild = r.randint(0, 25)
+        st.session_state.e_spawned = True
     with emp.container():
         ti("You meet an Egeggeg")
         he("Damage: " + str(st.session_state.edamage))
@@ -148,12 +150,15 @@ elif st.session_state.stage == 5:
             enemy = st.session_state.edamage - st.session_state.sheild
             if player > enemy:
                 st.session_state.stage = 6
+                del st.session_state["e_spawned"]
                 st.rerun()
             elif player == enemy:
                 st.session_state.stage = 7
+                del st.session_state["e_spawned"]
                 st.rerun()
             else:
                 st.session_state.stage = 8
+                del st.session_state["e_spawned"]
                 st.rerun()
 
 elif st.session_state.stage == 6:
