@@ -26,6 +26,41 @@ def getout(why):
     ti("Get Out")
     he("Please reload if " + why)
 
+# Petals setting
+
+def dice():
+    item = st.session_state.petals[8].copy()
+    item[1] = r.randint(1, 6) * 5
+    st.session_state.petals[8] = item
+
+def gamble():
+    item = st.session_state.petals[9].copy()
+    ran = r.randint(1, 3)
+    if ran == 1:
+        item[1] = 15
+        item[2] = 0
+    elif ran == 2:
+        item[1] = 35
+        item[2] = 0
+    else:
+        item[1] = 0
+        item[2] = -30
+    st.session_state.petals[9] = item
+
+def sword(sheild):
+    item = st.session_state.petals[10].copy()
+    item[1] = sheild // 2
+    st.session_state.petals[10] = item
+
+def DMCA():
+    item = st.session_state.petals[11].copy()
+    ran = r.randint(0, 1)
+    if ran:
+        item[1] = 10000
+    else:
+        item[2] = 10000
+    st.session_state.petals[11] = item
+
 if "petals" not in st.session_state:
     st.session_state.petals = [
         ["None", 0, 0, 5],
@@ -35,7 +70,11 @@ if "petals" not in st.session_state:
         ["Egeggeg", -5, 25, 0],
         ["Cutegay", 5, 5, 0],
         ["Bbl15-Antagonisms", 100, -50, 0],
-        ["Unknow", -10, 50, 0]
+        ["Unknow", -10, 50, 0],
+        ["Dice", 0, 0, 0],
+        ["Gamble", 0, 0, 0],
+        ["Sword", 0, 0, 0],
+        ["DMCA", 0, 0, 0]
     ]
 
 if "id" not in st.session_state:
@@ -56,6 +95,11 @@ if "edamage" not in st.session_state:
     st.session_state.edamage = 0
 if "esheild" not in st.session_state:
     st.session_state.esheild = 0
+
+dice()
+gamble()
+sword(0)
+DMCA()
 
 # Start
 if "stage" not in st.session_state:
@@ -149,14 +193,26 @@ elif st.session_state.stage == 5:
             player = st.session_state.damage - st.session_state.esheild
             enemy = st.session_state.edamage - st.session_state.sheild
             if player > enemy:
+                dice()
+                gamble()
+                sword(st.session_state.esheild)
+                DMCA()
                 st.session_state.stage = 6
                 del st.session_state["e_spawned"]
                 st.rerun()
             elif player == enemy:
+                dice()
+                gamble()
+                sword(st.session_state.esheild)
+                DMCA()
                 st.session_state.stage = 7
                 del st.session_state["e_spawned"]
                 st.rerun()
             else:
+                dice()
+                gamble()
+                sword(st.session_state.esheild)
+                DMCA()
                 st.session_state.stage = 8
                 del st.session_state["e_spawned"]
                 st.rerun()
