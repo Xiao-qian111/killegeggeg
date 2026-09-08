@@ -264,6 +264,7 @@ elif st.session_state.stage == 9:
         # v1.0.1
         st.title("Sep 8th, 2026 v1.0.1")
         st.write("Add 4 new petals: Dice, Gamble, Sword and DMCA")
+        st.write("Add change log")
         # v1.0.0
         st.title("Sep 7th, 2026 v1.0.0")
         st.write("The first version lol")
