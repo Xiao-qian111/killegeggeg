@@ -168,7 +168,7 @@ elif st.session_state.stage == 6:
     for i in range(win):
         get = -1
         while get in LOCKED:
-            get = r.randint(0, len(st.session_state.petals) - 1)
+            get = r.randint(2, len(st.session_state.petals) - 1)
         st.session_state.petals[get][3] += 1
         gets.append(st.session_state.petals[get][0])
     if r.randint(1, 100) == 1:
